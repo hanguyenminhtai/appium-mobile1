@@ -7,7 +7,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 
-public class lesson_1 {
+public class LaunchAppTest {
 
     public static void main(String[] args) {
 
