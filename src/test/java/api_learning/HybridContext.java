@@ -44,7 +44,7 @@ public class HybridContext {
             List<MenuItemData> menuItemDataList = new ArrayList<>();
 
             if (menuItemsElem.isEmpty())
-                throw new RuntimeException("[ERR] There is no list items!")
+                throw new RuntimeException("[ERR] There is no list items!");
             for (MobileElement menuItemElem : menuItemsElem) {
                 String itemText = menuItemElem.getText();
                 String itemHref = menuItemElem.getAttribute("href");
@@ -92,6 +92,14 @@ public class HybridContext {
 
         public String getHref() {
             return href;
+        }
+
+        @Override
+        public String toString() {
+            return "MenuItemData{" +
+                    "name='" + name + '\'' +
+                    ", href='" + href + '\'' +
+                    '}';
         }
     }
 }
