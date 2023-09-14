@@ -24,13 +24,13 @@ public class DriverFactory implements MobileCapabilityTypeEx {
         URL appiumServer = null;
 
         try{
-            appiumServer = new URL("http://localhost:4723/wd/hub");
+            appiumServer = new URL("http://localhost:4723");
         }catch (Exception e){
             e.printStackTrace();
         }
 
         if(appiumServer == null)
-            throw new RuntimeException("Can't construct the appium server url @http://localhost:4723/wd/hub");
+            throw new RuntimeException("Can't construct the appium server url @http://localhost:4723");
 
         switch (platform){
             case ANDROID:
