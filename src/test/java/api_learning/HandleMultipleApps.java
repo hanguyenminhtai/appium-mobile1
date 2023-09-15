@@ -26,6 +26,7 @@ public class HandleMultipleApps {
 
             MobileElement emailInputElem = appiumDriver.findElement(MobileBy.AccessibilityId("input-email"));
             MobileElement passwordInputElem = appiumDriver.findElement(MobileBy.AccessibilityId("input-password"));
+
             Dimension screenDimension = appiumDriver.manage().window().getSize();
             int screenHeight = screenDimension.getHeight();
             int screenWidth = screenDimension.getWidth();
