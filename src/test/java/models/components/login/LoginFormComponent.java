@@ -13,7 +13,7 @@ public class LoginFormComponent {
     private final static By passwordSel = MobileBy.AccessibilityId("input-password");
     private final static By getIncorrectPasswordTxtSel = MobileBy.xpath("//*[contains(@text, 'Please enter at least 8 characters')]");
     private final static By loginBtnSel = MobileBy.AccessibilityId("button-LOGIN");
-    private final static By loginSuccessfullySel = MobileBy.xpath("//*[contains(@text, 'Success')]");
+    private final static By loginSuccessfullySel = MobileBy.id("android:id/alertTitle");
 
     public LoginFormComponent(AppiumDriver<MobileElement> appiumDriver) {
         this.appiumDriver = appiumDriver;
