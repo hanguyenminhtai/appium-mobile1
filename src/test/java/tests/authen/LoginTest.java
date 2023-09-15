@@ -15,9 +15,9 @@ public class LoginTest {
     public void testLogin() {
         AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.ANDROID);
         List<LoginCred> loginCreds = new ArrayList<>();
-        //loginCreds.add(new LoginCred("robert@gmail.com", "qwe123"));
+        loginCreds.add(new LoginCred("robert@gmail.com", "qwe123"));
+        loginCreds.add(new LoginCred("robert@", "12345678qwe"));
         loginCreds.add(new LoginCred("robert@gmail.com", "12345678"));
-        //loginCreds.add(new LoginCred("robert@", "12345678qwe"));
 
         try {
             for (LoginCred loginCred : loginCreds) {
@@ -26,7 +26,6 @@ public class LoginTest {
                 loginFlow.login();
                 loginFlow.verifyLogin();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
