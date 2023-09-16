@@ -45,8 +45,7 @@ public class LoginFormComponent {
     }
 
     public void clickOnLoginBtn(){
-        MobileElement loginBtnElem = appiumDriver.findElement(loginBtnSel);
-        loginBtnElem.click();
+        appiumDriver.findElement(loginBtnSel).click();
     }
 
     public String getLoginSuccessfullySel() {
