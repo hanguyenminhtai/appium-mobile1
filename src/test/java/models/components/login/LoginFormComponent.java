@@ -13,35 +13,42 @@ public class LoginFormComponent {
     private final static By passwordSel = MobileBy.AccessibilityId("input-password");
     private final static By getIncorrectPasswordTxtSel = MobileBy.xpath("//*[contains(@text, 'Please enter at least 8 characters')]");
     private final static By loginBtnSel = MobileBy.AccessibilityId("button-LOGIN");
-    private final static By loginSuccessfullySel = MobileBy.id("android:id/alertTitle");
+    private final static By loginSuccessfullySel = MobileBy.xpath("//*[contains(@text, 'Success')]");
 
     public LoginFormComponent(AppiumDriver<MobileElement> appiumDriver) {
         this.appiumDriver = appiumDriver;
     }
 
     public void inputUsername(String usernameTxt) {
-        MobileElement usernameElem = appiumDriver.findElement(usernameSel);
-        if (!usernameTxt.isEmpty()) usernameElem.sendKeys(usernameTxt);
+        if (!usernameTxt.isEmpty()) {
+            MobileElement usernameElem = appiumDriver.findElement(usernameSel);
+            usernameElem.clear();
+            usernameElem.sendKeys(usernameTxt);
+        }
     }
 
-    public String getInvalidEmailStr(){
+    public String getInvalidEmailStr() {
         return appiumDriver.findElement(incorrectEmailTxtSel).getText();
     }
 
     public void inputPassword(String passwordTxt) {
-        MobileElement passwordElem = appiumDriver.findElement(passwordSel);
-        if (!passwordTxt.isEmpty()) passwordElem.sendKeys(passwordTxt);
+        if (!passwordTxt.isEmpty()) {
+            MobileElement passwordElem = appiumDriver.findElement(passwordSel);
+            passwordElem.clear();
+            passwordElem.sendKeys(passwordTxt);
+        }
     }
 
-    public String getInvalidPasswordStr(){
+    public String getInvalidPasswordStr() {
         return appiumDriver.findElement(getIncorrectPasswordTxtSel).getText();
     }
 
     public void clickOnLoginBtn() {
-        appiumDriver.findElement(loginBtnSel).click();
+        MobileElement loginBtnElem = appiumDriver.findElement(loginBtnSel);
+        loginBtnElem.click();
     }
 
-    public String getLoginSuccessfullySel(){
+    public String getLoginSuccessfullySel() {
         return appiumDriver.findElement(loginSuccessfullySel).getText();
     }
 }

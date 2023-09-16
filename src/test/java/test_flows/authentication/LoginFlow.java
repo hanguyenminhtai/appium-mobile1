@@ -51,7 +51,7 @@ public class LoginFlow extends BaseFlow {
     private void verifyCorrectLoginCreds(LoginFormComponent loginFormComp) {
         String actualLoginStr = loginFormComp.getLoginSuccessfullySel();
         String expectedLoginStr = "Success";
-        Assert.assertEquals(actualLoginStr, expectedLoginStr, "[ERR] Invalid login success: not match");
+        Assert.assertEquals(actualLoginStr, expectedLoginStr, "[ERR] Invalid login: not match");
     }
 
     private void verifyIncorrectEmail(LoginFormComponent loginFormComp) {

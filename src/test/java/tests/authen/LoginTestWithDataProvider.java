@@ -8,9 +8,6 @@ import org.testng.annotations.Test;
 import platform.Platform;
 import test_flows.authentication.LoginFlow;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LoginTestWithDataProvider {
 
     @Test(dataProvider = "loginCredData")
@@ -57,9 +54,9 @@ public class LoginTestWithDataProvider {
 
     @DataProvider
     public LoginCred[] loginCredData() {
-        //LoginCred loginCred1 = new LoginCred("robert@gmail.com", "qwe123");
-        //LoginCred loginCred2 = new LoginCred("robert@", "12345678qwe");
-        LoginCred loginCred3 = new LoginCred("robert@gmail.com", "12345678");
-        return new LoginCred[]{ loginCred3};
+        //LoginCred loginCred1 = new LoginCred("abc@sth.com", "1234567");
+        LoginCred loginCred2 = new LoginCred("a", "12345678");
+        LoginCred loginCred3 = new LoginCred("asd@sth.com", "12345678");
+        return new LoginCred[]{loginCred2, loginCred3};
     }
 }
