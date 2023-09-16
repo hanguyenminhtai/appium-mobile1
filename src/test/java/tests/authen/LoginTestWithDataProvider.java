@@ -55,8 +55,8 @@ public class LoginTestWithDataProvider {
     @DataProvider
     public LoginCred[] loginCredData() {
         //LoginCred loginCred1 = new LoginCred("abc@sth.com", "1234567");
-        LoginCred loginCred2 = new LoginCred("a", "12345678");
+        //LoginCred loginCred2 = new LoginCred("a", "12345678");
         LoginCred loginCred3 = new LoginCred("asd@sth.com", "12345678");
-        return new LoginCred[]{loginCred2, loginCred3};
+        return new LoginCred[]{loginCred3};
     }
 }

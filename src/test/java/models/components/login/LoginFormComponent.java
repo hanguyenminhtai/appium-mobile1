@@ -4,16 +4,17 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginFormComponent {
 
     private final AppiumDriver<MobileElement> appiumDriver;
     private final static By usernameSel = MobileBy.AccessibilityId("input-email");
-    private final static By incorrectEmailTxtSel = MobileBy.xpath("//*[contains(@text, 'Please enter a valid email address')]");
+    private final static By incorrectEmailTxtSel = MobileBy.xpath("//android.widget.EditText[@content-desc=\"input-email\"]");
     private final static By passwordSel = MobileBy.AccessibilityId("input-password");
-    private final static By getIncorrectPasswordTxtSel = MobileBy.xpath("//*[contains(@text, 'Please enter at least 8 characters')]");
+    private final static By getIncorrectPasswordTxtSel = MobileBy.xpath("//android.widget.EditText[@content-desc=\"input-password\"]");
     private final static By loginBtnSel = MobileBy.AccessibilityId("button-LOGIN");
-    private final static By loginSuccessfullySel = MobileBy.xpath("//*[contains(@text, 'Success')]");
+    private final static By loginSuccessfullySel = MobileBy.id("android:id/alertTitle");
 
     public LoginFormComponent(AppiumDriver<MobileElement> appiumDriver) {
         this.appiumDriver = appiumDriver;
@@ -43,7 +44,7 @@ public class LoginFormComponent {
         return appiumDriver.findElement(getIncorrectPasswordTxtSel).getText();
     }
 
-    public void clickOnLoginBtn() {
+    public void clickOnLoginBtn(){
         MobileElement loginBtnElem = appiumDriver.findElement(loginBtnSel);
         loginBtnElem.click();
     }

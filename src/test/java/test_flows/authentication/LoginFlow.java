@@ -24,7 +24,7 @@ public class LoginFlow extends BaseFlow {
         LoginFormComponent loginFormComp = loginScreen.loginFormComp();
         if (!username.isEmpty()) loginFormComp.inputUsername(username);
 
-        if (!password.isEmpty()) loginFormComp.inputPassword(username);
+        if (!password.isEmpty()) loginFormComp.inputPassword(password);
 
         loginFormComp.clickOnLoginBtn();
     }
