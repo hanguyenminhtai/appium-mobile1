@@ -6,7 +6,7 @@ import models.components.login.LoginFormComponent;
 import models.pages.LoginScreen;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.testng.Assert;
-import test_flows.webview.BaseFlow;
+import test_flows.BaseFlow;
 
 public class LoginFlow extends BaseFlow {
 
@@ -52,6 +52,7 @@ public class LoginFlow extends BaseFlow {
         String actualLoginStr = loginFormComp.getLoginSuccessfullySel();
         String expectedLoginStr = "Success";
         Assert.assertEquals(actualLoginStr, expectedLoginStr, "[ERR] Invalid login: not match");
+        System.out.println("Login Success");
     }
 
     private void verifyIncorrectEmail(LoginFormComponent loginFormComp) {

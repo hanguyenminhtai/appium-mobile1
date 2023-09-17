@@ -13,7 +13,9 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverFactory implements MobileCapabilityTypeEx {
 
-    public static AppiumDriver<MobileElement> getDriver(Platform platform){
+    private AppiumDriver<MobileElement> appiumDriver;
+
+    public static AppiumDriver<MobileElement> getDriver(Platform platform) {
         AppiumDriver<MobileElement> appiumDriver = null;
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(PLATFORM_NAME, "Android");
@@ -23,16 +25,16 @@ public class DriverFactory implements MobileCapabilityTypeEx {
         desiredCapabilities.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
         URL appiumServer = null;
 
-        try{
+        try {
             appiumServer = new URL("http://localhost:4723");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if(appiumServer == null)
+        if (appiumServer == null)
             throw new RuntimeException("Can't construct the appium server url @http://localhost:4723");
 
-        switch (platform){
+        switch (platform) {
             case ANDROID:
                 appiumDriver = new AndroidDriver<>(appiumServer, desiredCapabilities);
                 break;
@@ -44,5 +46,47 @@ public class DriverFactory implements MobileCapabilityTypeEx {
         appiumDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
         return appiumDriver;
+    }
+
+    public AppiumDriver<MobileElement> getDriver(Platform platform, String udid, String systemPort) {
+        if (appiumDriver == null) {
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+            desiredCapabilities.setCapability(PLATFORM_NAME, "Android");
+            desiredCapabilities.setCapability(AUTOMATION_NAME, "uiautomator2");
+            desiredCapabilities.setCapability(UDID, udid);
+            desiredCapabilities.setCapability(APP_PACKAGE, "com.wdiodemoapp");
+            desiredCapabilities.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
+            desiredCapabilities.setCapability(SYSTEM_PORT, systemPort);
+            URL appiumServer = null;
+
+            try {
+                appiumServer = new URL("http://localhost:4723");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            if (appiumServer == null)
+                throw new RuntimeException("Can't construct the appium server url @http://localhost:4723");
+
+            switch (platform) {
+                case ANDROID:
+                    appiumDriver = new AndroidDriver<>(appiumServer, desiredCapabilities);
+                    break;
+                case IOS:
+                    appiumDriver = new IOSDriver<>(appiumServer, desiredCapabilities);
+                    break;
+            }
+
+            appiumDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        }
+
+        return appiumDriver;
+    }
+
+    public void quitAppiumDriver() {
+        if (appiumDriver != null) {
+            appiumDriver.quit();
+            appiumDriver = null;
+        }
     }
 }

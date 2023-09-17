@@ -11,9 +11,9 @@ public class LoginFormComponent {
 
     private final AppiumDriver<MobileElement> appiumDriver;
     private final static By usernameSel = MobileBy.AccessibilityId("input-email");
-    private final static By incorrectEmailTxtSel = MobileBy.xpath("//android.widget.EditText[@content-desc=\"input-email\"]");
+    private final static By incorrectEmailTxtSel = MobileBy.xpath("//*[contains(@text, 'Please enter a valid email address')]");
     private final static By passwordSel = MobileBy.AccessibilityId("input-password");
-    private final static By getIncorrectPasswordTxtSel = MobileBy.xpath("//android.widget.EditText[@content-desc=\"input-password\"]");
+    private final static By getIncorrectPasswordTxtSel = MobileBy.xpath("//*[contains(@text, 'Please enter at least 8 characters')]");
     private final static By loginBtnSel = MobileBy.AccessibilityId("button-LOGIN");
     private final static By loginSuccessfullySel = MobileBy.id("android:id/alertTitle");
 
