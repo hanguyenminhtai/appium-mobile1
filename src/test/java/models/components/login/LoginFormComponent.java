@@ -4,7 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 public class LoginFormComponent {
 
@@ -44,8 +45,10 @@ public class LoginFormComponent {
         return appiumDriver.findElement(getIncorrectPasswordTxtSel).getText();
     }
 
+    // TODO: 9/17/2023 change inplicit wait -> exlicit wait 
     public void clickOnLoginBtn(){
         appiumDriver.findElement(loginBtnSel).click();
+        appiumDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
     public String getLoginSuccessfullySel() {
