@@ -25,7 +25,7 @@ public class DriverFactory implements MobileCapabilityTypeEx {
         desiredCapabilities.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
         URL appiumServer = null;
         try {
-            appiumServer = new URL("http://localhost:4723");
+            appiumServer = new URL("http://localhost:4723/wd/hub");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,8 +56,8 @@ public class DriverFactory implements MobileCapabilityTypeEx {
             desiredCapabilities.setCapability(APP_PACKAGE, "com.wdiodemoapp");
             desiredCapabilities.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
             desiredCapabilities.setCapability(SYSTEM_PORT, systemPort);
+            String targetServer = "http://192.168.1.218:4444/wd/hub";
             URL appiumServer = null;
-            String targetServer = "http://192.168.1.218:4444";
             try {
                 appiumServer = new URL(targetServer);
             } catch (Exception e) {
@@ -76,7 +76,7 @@ public class DriverFactory implements MobileCapabilityTypeEx {
                     break;
             }
 
-            appiumDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            appiumDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         }
 
         return appiumDriver;
